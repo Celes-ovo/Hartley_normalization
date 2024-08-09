@@ -3,9 +3,9 @@ import numpy as np
 from utils.utils_common import distance, scaling_factor
 from utils.convert_revert import preprocess_df, convert_minmax, convert_hart, revert_hart, revert_minmax
 
-def minmax_hart_convert(df, label, width, height, parm = None):
+def minmax_hart_convert(df, width, height, parm = None):
     df_x = convert_minmax(df, width, height)
-    df_x, df_y = preprocess_df(df_x, label, parm=parm)
+    df_x, df_y = preprocess_df(df_x, df_x, parm=parm)
     
     # 중심 좌표 구하기
     df_x2 = distance(df_x)
