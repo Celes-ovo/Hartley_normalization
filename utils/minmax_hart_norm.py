@@ -43,9 +43,6 @@ def minmax_hart_convert(df, width, height, parm=None, noise=False):
 
 def minmax_hart_revert(df, mat_calc, width, height):
     reverted_output = revert_hart(df, mat_calc)
-    
-    print(reverted_output.shape)
-    
     final_output = revert_minmax(reverted_output, width, height)
     
     return final_output

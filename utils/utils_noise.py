@@ -1,19 +1,18 @@
-def getstd(i_array):
-    temp = np.std(i_array, axis=0)
+import numpy as np
 
-    return temp
+def getstd(df):
+    std = np.std(df, axis=0)
+
+    return std
 
 def get_noise(i_array, i_std):
-    array_2 = np.zeros(shape=i_array.shape)
-    n_row, n_col = array_2.shape
-    for i in range(n_col):
-        array_2[:, i] = np.random.normal(loc=0.0,
-                                         scale=i_std[i],
-                                         size=n_row)
-    return array_2
+    i_zero_array = np.zeros(shape=i_array.shape)
+    print(i_zero_array.shape)
+    for i in range(i_array.shape[0]):
+        i_zero_array[i] = np.random.normal(loc=0.0, scale=i_std)
+    return i_zero_array
 
-# 
-def noised_array(i_array, alpha=0.1):
+def noised_array(i_array, alpha=0.01):
     i_std = getstd(i_array)
     noise = get_noise(i_array, i_std)
 
