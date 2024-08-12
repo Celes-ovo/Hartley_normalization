@@ -29,9 +29,9 @@ from utils.convert_revert import preprocess_df, convert_minmax, convert_hart, re
     
 #     return final_output
 
-def minmax_hart_convert(df, width, height, parm = None):
+def minmax_hart_convert(df, width, height, parm=None, noise=False):
     df_x = convert_minmax(df, width, height)
-    df_x, df_y = preprocess_df(df_x, df_x, parm=parm)
+    df_x, df_y = preprocess_df(df_x, df_x, parm=parm, noise=noise)
     
     # 중심 좌표 구하기
     df_x2 = distance(df_x)
