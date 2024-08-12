@@ -1,0 +1,3 @@
+[submodule "csv_interpolation"]
+	path = csv_interpolation
+	url = https://github.com/Celes-ovo/csv_interpolation.git

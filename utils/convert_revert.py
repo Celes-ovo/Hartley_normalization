@@ -2,6 +2,7 @@ import numpy as np
 
 # Our modules
 from utils.utils_common import matrix_calc, matrix_calc_inv
+from csv_interpolation.utils.utils import noised_array
 
 # def convert_minmax(df, width, height):
 #     df_copy = df.copy()
@@ -114,7 +115,7 @@ def convert_minmax(df, width, height):
 
     return df_copy
 
-def preprocess_df(df, label, parm=0):   
+def preprocess_df(df, label, parm=0, noise=False):   
     df_x = df
     df_y = label
     
@@ -123,6 +124,9 @@ def preprocess_df(df, label, parm=0):
     
     df_y[np.where(df_y<0)] = parm
     df_y[np.isnan(df_y)] = parm
+
+    if noise:
+        df_x = noised_array(df_x, alpha=0.1)
     
     return df_x, df_y
 
