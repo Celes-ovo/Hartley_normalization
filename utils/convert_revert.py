@@ -1,11 +1,8 @@
 import numpy as np
-import os, sys
-sys.path.append(os.path.join(os.getcwd, 'csv_interpolation'))
-import csv_interpolation
 
 # Our modules
 from utils.utils_common import matrix_calc, matrix_calc_inv
-from csv_interpolation.utils.utils import noised_array
+from utils.utils_noise import noised_array
 
 # def convert_minmax(df, width, height):
 #     df_copy = df.copy()
