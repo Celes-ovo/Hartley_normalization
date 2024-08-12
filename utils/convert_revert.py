@@ -2,7 +2,11 @@ import numpy as np
 
 # Our modules
 from utils.utils_common import matrix_calc, matrix_calc_inv
-from csv_interpolation.utils.utils import noised_array
+
+try:
+    from csv_interpolation.utils.utils import noised_array
+except:
+    from Hartley_normalization.csv_interpolation.utils.utils import noised_array
 
 # def convert_minmax(df, width, height):
 #     df_copy = df.copy()
