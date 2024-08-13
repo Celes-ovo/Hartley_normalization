@@ -33,7 +33,7 @@ def minmax_hart_convert(df, width, height, noise_arr, parm=None, noise=False, al
     df_x = convert_minmax(df, width, height)
     df_x, df_y = preprocess_df(df_x, df_x, noise=noise, noise_arr=noise_arr, alpha=alpha)
 
-    print(df_x[0])
+    # print(df_x[0])
     
     # 중심 좌표 구하기
     df_x2 = distance(df_x)
