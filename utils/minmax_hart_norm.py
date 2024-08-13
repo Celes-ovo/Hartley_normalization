@@ -31,12 +31,21 @@ from utils.convert_revert import preprocess_df, convert_minmax, convert_hart, re
 
 def minmax_hart_convert(df, width, height, noise_arr, parm=None, noise=False, alpha=0.1):
     df_x = convert_minmax(df, width, height)
-    df_x, df_y = preprocess_df(df_x, df_x, parm=parm, noise=noise, noise_arr=noise_arr, alpha=alpha)
+    df_x, df_y = preprocess_df(df_x, df_x, noise=noise, noise_arr=noise_arr, alpha=alpha)
+
+    print(df_x[0])
     
     # 중심 좌표 구하기
     df_x2 = distance(df_x)
 
     converted_arr, mat_calc = convert_hart(df_x, df_x2)
+
+    # df_x[np.where(df_x<0)] = parm
+    converted_arr[np.isnan(df_x)] = parm
+    
+    # df_y[np.where(df_y<0)] = parm
+    converted_arr[np.isnan(df_y)] = parm
+
     
     return converted_arr, mat_calc, df_y
     

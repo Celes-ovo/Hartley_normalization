@@ -115,16 +115,10 @@ def convert_minmax(df, width, height):
 
     return df_copy
 
-def preprocess_df(df, label, parm=0, noise_arr=None, noise=False, alpha=0.1):   
+def preprocess_df(df, label, noise_arr=None, noise=False, alpha=0.1):   
     df_x = df
     df_y = label
     
-    df_x[np.where(df_x<0)] = parm
-    df_x[np.isnan(df_x)] = parm
-    
-    df_y[np.where(df_y<0)] = parm
-    df_y[np.isnan(df_y)] = parm
-
     if noise:
         df_x = noised_array(df_x, noise_arr, alpha=alpha)
     
