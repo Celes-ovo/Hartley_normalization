@@ -132,7 +132,7 @@ def preprocess_df(df, label, parm=0, noise=False, noise_arr=None):
 
 
 def revert_minmax(df, width, height):
-    df_copy = df.copy()
+    df_copy = df.copy
     
     df_odd = df_copy[::2]
     df_even = df_copy[1::2]
