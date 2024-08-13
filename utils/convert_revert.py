@@ -115,7 +115,7 @@ def convert_minmax(df, width, height):
 
     return df_copy
 
-def preprocess_df(df, label, parm=0, noise=False, noise_arr=None, alpha=0.1):   
+def preprocess_df(df, label, parm=0, noise_arr=None, noise=False, alpha=0.1):   
     df_x = df
     df_y = label
     

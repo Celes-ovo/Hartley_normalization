@@ -23,6 +23,7 @@ import os
 
 
 def noised_array(i_array, noise_arr, alpha=0.1):
+    print(f'alpha : {alpha}')
     array_2 = i_array + (alpha*noise_arr)
 
     return array_2
