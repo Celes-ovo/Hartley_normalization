@@ -22,8 +22,7 @@ import os
 #     return array_2
 
 
-def noised_array(i_array,alpha=0.1):
-    i_std = np.load(os.path.join(os.getcwd(), 'utils', 'landmark_std.npy'))
-    array_2 = i_array + (alpha*i_std)
+def noised_array(i_array, noise_arr, alpha=0.1):
+    array_2 = i_array + (alpha*noise_arr)
 
     return array_2
