@@ -126,7 +126,7 @@ def preprocess_df(df, label, parm=0, noise=False):
     df_y[np.isnan(df_y)] = parm
 
     if noise:
-        df_x = noised_array(df_x, alpha=0.1)
+        df_x = noised_array(df_x, alpha=1.2)
     
     return df_x, df_y
 
