@@ -24,7 +24,7 @@ import os
 
 def noised_array(i_array, noise_arr, alpha=0.1):
     # print(f'alpha : {alpha}')
-    noise_arr_2 = 
-    array_2 = i_array + (alpha*noise_arr)
+    noise_arr_2 = np.array([np.random.normal(0, sigma, 1) for sigma in noise_arr])
+    array_2 = i_array + (alpha*noise_arr_2.squeeze())
 
     return array_2
