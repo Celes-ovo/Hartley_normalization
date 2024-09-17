@@ -29,7 +29,7 @@ from utils.convert_revert import preprocess_df, convert_minmax, convert_hart, re
     
 #     return final_output
 
-def minmax_hart_convert(df, width, height, noise_arr, parm=None, noise=False, alpha=0.1):
+def minmax_hart_convert(df, width, height, noise_arr, parm=None, noise=False, hart=True, alpha=0.1):
     df_x = convert_minmax(df, width, height)
     df_x, df_y = preprocess_df(df_x, df_x, noise=noise, noise_arr=noise_arr, alpha=alpha)
 
@@ -38,20 +38,31 @@ def minmax_hart_convert(df, width, height, noise_arr, parm=None, noise=False, al
     # 중심 좌표 구하기
     df_x2 = distance(df_x)
 
-    converted_arr, mat_calc = convert_hart(df_x, df_x2)
+    if hart:
+        converted_arr, mat_calc = convert_hart(df_x, df_x2)
+        # df_x[np.where(df_x<0)] = parm
+        converted_arr[np.isnan(df_x)] = parm
+        # df_y[np.where(df_y<0)] = parm
+        converted_arr[np.isnan(df_y)] = parm
 
-    # df_x[np.where(df_x<0)] = parm
-    converted_arr[np.isnan(df_x)] = parm
-    
-    # df_y[np.where(df_y<0)] = parm
-    converted_arr[np.isnan(df_y)] = parm
+    else:
+        df_x[np.isnan(df_x)] = parm
+        # df_y[np.where(df_y<0)] = parm
+        df_x[np.isnan(df_y)] = parm
 
+        converted_arr = df_x
     
     return converted_arr, mat_calc, df_y
     
 
-def minmax_hart_revert(df, mat_calc, width, height):
-    reverted_output = revert_hart(df, mat_calc)
+def minmax_hart_revert(df, mat_calc, width, height, hart=True):
+    
+    if hart:
+        reverted_output = revert_hart(df, mat_calc)
+
+    else:
+        reverted_output = df
+    
     final_output = revert_minmax(reverted_output, width, height)
     
     return final_output
