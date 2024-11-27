@@ -53,8 +53,9 @@ def minmax_hart_convert(df, width, height, noise_arr, parm=None, noise=False, ha
         df_x[np.isnan(df_y)] = parm
 
         converted_arr = df_x
+        mat_calc = None
     
-        return converted_arr, df_y
+        return converted_arr, mat_calc, df_y
     
 
 def minmax_hart_revert(df, mat_calc, width, height, hart=True):
